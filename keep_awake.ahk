@@ -36,20 +36,16 @@ intervalMs := 60000 ; 1分
 
 ; 初期マウス位置取得は不要（MoveMouseTick で A_MouseX/A_MouseY を直接利用）
 
-; F8: トグル（GUIを使わずトレイ通知のみ）
-F8:: {
-    ToggleEnabled()
-}
-
-; F9: デバッグで即時1回移動
-F9:: {
-    DebugMove()
-}
-
-; 終了
-^!q:: {
-    OnExitApp()
-}
+;F8:: {
+;    ToggleEnabled()
+;}
+;F9:: {
+;    DebugMove()
+;}
+;; 終了
+;^!q:: {
+;    OnExitApp()
+;}
 
 ; タイマーをセット (v2: Func("Name") は不要、関数オブジェクトを直接渡す)
 SetTimer(TimerTick, intervalMs)
