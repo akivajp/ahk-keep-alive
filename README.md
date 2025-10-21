@@ -1,4 +1,4 @@
-# keep-display
+# ahk-keep-alive
 
 このリポジトリには、Windowsの自動スリープを防ぐためのAutoHotkeyスクリプトが含まれています。
 
