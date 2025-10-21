@@ -16,10 +16,7 @@ Enabled := true
 moveAmount := 1
 intervalMs := 60000 ; 1分
 
-; 初期マウス位置取得（保持は任意）
-pos := MouseGetPos()
-lastX := pos.X
-lastY := pos.Y
+; 初期マウス位置取得は不要（MoveMouseTick で A_MouseX/A_MouseY を直接利用）
 
 ; F8: トグル（GUIを使わずトレイ通知のみ）
 F8:: {
@@ -51,9 +48,8 @@ TimerTick(*) {
 
 MoveMouseTick(*) {
     global moveAmount
-    pos := MouseGetPos()
-    curX := pos.X
-    curY := pos.Y
+    ; 現在のマウス座標を安全に取得（AHK v2: ByRef）
+    MouseGetPos(&curX, &curY)
     ; 右へ1ピクセル移動してすぐ戻す
     MouseMove(curX + moveAmount, curY, 0)
     Sleep(10)
