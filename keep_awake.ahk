@@ -20,6 +20,7 @@ intervalMs := 60000 ; 1分
 
 ; F8: トグル（GUIを使わずトレイ通知のみ）
 F8:: {
+    global Enabled
     Enabled := !Enabled
     if Enabled
         TrayTip("Keep Awake", "Enabled - マウス移動を再開します.", 2)
