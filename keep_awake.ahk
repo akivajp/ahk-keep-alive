@@ -21,15 +21,9 @@ pos := MouseGetPos()
 lastX := pos.X
 lastY := pos.Y
 
-; シンプルなステータスGUIを作成
-Gui := GuiCreate()
-Gui.Add("Text", "vStatusText", "Running: Enabled")
-Gui.Show("x10 y10 NoActivate AlwaysOnTop")
-
-; F8: トグル
+; F8: トグル（GUIを使わずトレイ通知のみ）
 F8:: {
     Enabled := !Enabled
-    Gui.ControlSetText("StatusText", "Running: " (Enabled ? "Enabled" : "Disabled"))
     if Enabled
         TrayTip("Keep Awake", "Enabled - マウス移動を再開します.", 2)
     else
@@ -45,8 +39,8 @@ F9:: {
 ; 終了
 ^!q:: ExitApp
 
-; タイマーをセット
-SetTimer(Func("TimerTick"), intervalMs)
+; タイマーをセット (v2: Func("Name") は不要、関数オブジェクトを直接渡す)
+SetTimer(TimerTick, intervalMs)
 
 TimerTick(*) {
     global Enabled
